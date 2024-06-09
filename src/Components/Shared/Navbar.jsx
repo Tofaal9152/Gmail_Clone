@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // Image from Assets
 import gmail_icon from "../../assets/logo_gmail.png";
 // Icons From React Icon
@@ -11,6 +11,10 @@ import { GoSearch } from "react-icons/go";
 import { IoMdOptions } from "react-icons/io";
 
 const Navbar = () => {
+  const [bgColor, setbgColor] = useState(false);
+  const handleBgColor = () => {
+    setbgColor(true);
+  };
   return (
     <div className="bg-[#F6F8FC] flex items-center justify-between px-[4%] py-[0.6%]">
       {/* hamburger || icon */}
@@ -21,14 +25,19 @@ const Navbar = () => {
         <img src={gmail_icon} className="cursor-pointer" alt="" />
       </div>
       {/* Search */}
-      <div className="md:visible invisible flex items-center justify-between bg-[#EAF1FB] w-[42rem] h-[3rem] rounded-3xl px-[1%]">
+      <div
+        className={`${
+          bgColor ? "bg-white shadow-md" : ""
+        } md:visible invisible flex items-center justify-between bg-[#EAF1FB] w-[42rem] h-[3rem] rounded-3xl px-[1%]`}
+      >
         <div className="flex items-center ">
           <div className="p-2 rounded-full cursor-pointer hover:bg-gray-100">
             <GoSearch size={23} />
           </div>
           <input
             type="text"
-            className="outline-0 w-[31rem] bg-transparent pl-2 text-xl"
+            onClick={handleBgColor}
+            className={`outline-0 w-[31rem] bg-transparent pl-2 text-xl`}
             placeholder="Search mail"
           />
         </div>

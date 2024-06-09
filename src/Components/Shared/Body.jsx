@@ -1,12 +1,13 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 import Mails from "./Mails";
+import { Outlet } from "react-router-dom";
 
 const Body = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <Mails />
+      <Outlet />
     </div>
   );
 };
